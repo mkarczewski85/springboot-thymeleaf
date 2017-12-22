@@ -1,4 +1,4 @@
-# Project task for Appollogic
+# Project task for *****
 
 This project is a task for a job interview.
 
