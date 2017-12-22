@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <div class="starter-template" ng-app="appManager">
+        <h1>Administration Panel</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <div  ng-controller="materialManagerController" class="materialList">
+            <h2>Material list</h2>
+            <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CompanyID</th>
+            </tr>
+            <tr ng-repeat="material in materials">
+                <td>{{material.ID}}</td>
+                <td>{{material.name}}</td>
+                <td>{{material.companyID}}</td>
+                <td><a ng-click="removeMaterial(material)" class="button">Delete</a>
+                    | <a ng-click="editMaterial(material)" class="button">Edit</a></td>
+            </tr>
+            </table>
+            <form ng-submit="submitMaterial()">
+                <label>ID</label>
+                <input type="number" name="ID" class="form-control" placeholder="ID" ng-model="formData.ID"></input>
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Name" ng-model="formData.name"></input>
+                <label>Company ID</label>
+                <input type="number" name="companyID" class="form-control" placeholder="Company ID" ng-model="formData.companyID"></input>
+                <button type="submit">Add</button>
+                <button type="button" ng-click="updateMaterial()">Update</button>
+                <button ng-confirm-click="Reseting materials database!" confirmed-click="resetMaterials()">Reset</button>
+            </form>
+        </div>
+
+        <div ng-controller="companyManagerController" class="companyList">
+            <h2>Company list</h2>
+            <table>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Company name</th>
+                </tr>
+                <tr ng-repeat="company in companies">
+                    <td>{{company.companyID}}</td>
+                    <td>{{company.companyName}}</td>
+                    <td><a ng-click="removeCompany(company)" class="button">Delete</a>
+                        | <a ng-click="editCompany(company)" class="button">Edit</a></td>
+                </tr>
+            </table>
+            <form ng-submit="submitCompany()">
+                <label>Company ID</label>
+                <input type="number" name="companyID" class="form-control" placeholder="Company ID" ng-model="formData.companyID"></input>
+                <label>Company name</label>
+                <input type="text" name="companyName" class="form-control" placeholder="Company name" ng-model="formData.companyName"></input>
+                <button type="submit">Add</button>
+                <button type="button" ng-click="updateCompany()">Update</button>
+                <button ng-confirm-click="Reseting company database!" confirmed-click="resetCompanies()">Reset</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

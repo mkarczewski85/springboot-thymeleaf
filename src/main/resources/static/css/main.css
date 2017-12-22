@@ -1,0 +1,45 @@
+h1 {
+    color: #424242;
+}
+
+h2 {
+    color: #37474F;
+}
+
+footer {
+    margin-top: 60px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+a {
+    cursor: pointer;
+}
+
+form {
+    width: 300px;
+}
+
+.materialList {
+    float: left;
+    width: 600px;
+}
+
+.companyList {
+    float: left;
+    width: 500px;
+}
+
